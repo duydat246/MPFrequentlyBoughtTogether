@@ -1,0 +1,187 @@
+.fbt {
+    clear: both;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.fbt hr {
+    width: 100%;
+}
+
+h2 {
+    font-weight: 300;
+    line-height: 1.1;
+    font-size: 2.6rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+form {
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+}
+
+ul > li,
+ol > li {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.fbtProductsGrid {
+    display: flex;
+}
+
+.fbtImageBox {
+    width: auto;
+    color: #575757;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .fbtImageBox {
+        max-width: calc(100% - 300px);
+    }
+}
+
+.item {
+    font-size: 1.4rem;
+    line-height: normal;
+    letter-spacing: normal;
+    vertical-align: top;
+}
+
+.fbtImageBox li.item {
+    width: 100px !important;
+}
+
+.productImageContainer {
+    max-width: 100%;
+}
+
+.productImageWrapper {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    padding-top: 20px;
+}
+
+.fbtPlus {
+    display: inline-block;
+    line-height: 125px;
+    font-size: 22px;
+    color: #757575;
+}
+
+.fbtPriceBox {
+    width: auto;
+    float: left;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.fbtPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #575757;
+}
+
+.fbtAddToCart,
+.fbtAddToWishlist {
+    margin: 10px 0 0;
+}
+
+button {
+    border-radius: 3px;
+}
+
+.mpfbtToCart {
+    background-image: none;
+    background: #1979c3;
+    border: 1px solid #1979c3;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: open sans, helvetica neue, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    padding: 5px 10px;
+    font-size: 1rem;
+    line-height: 1rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.mpfbtToCart:hover {
+    background: #006bb4;
+    border: 1px solid #006bb4;
+    color: #fff;
+}
+
+.mpfbtToWishList {
+    background-image: none;
+    background: #eee;
+    border: 1px solid #ccc;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: open sans, helvetica neue, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 1rem;
+    line-height: 1rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.fbtProductsRows,
+.fbtCheckboxLabel {
+    display: inline-block;
+}
+
+input[type="checkbox"] {
+    margin: 2px 5px 0 0;
+    position: relative;
+    top: 2px;
+}
+
+._keyfocus *:focus,
+input:not([disabled]):focus,
+textarea:not([disabled]):focus,
+select:not([disabled]):focus {
+    box-shadow: 0 0 3px 1px #00699d;
+}
+
+.fbtItemPrice {
+    color: #575757;
+}
+
+.fbtCheckboxLabel a {
+    color: #006bb4;
+    text-decoration: none;
+}
+
+.fbtCheckboxLabel a:hover {
+    text-decoration: underline;
+}

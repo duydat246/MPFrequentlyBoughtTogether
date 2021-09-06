@@ -1,0 +1,57 @@
+.mageplaza-frequently-bought-together-block {
+    clear: both;
+}
+
+.mageplaza-fbt-title {
+}
+
+h2 {
+    font-weight: 300;
+    line-height: 1.1;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+}
+
+.mageplaza-fbt-content {
+    padding-left: 1rem;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.wrapper {
+}
+
+.grid {
+}
+
+.products-grid {
+}
+
+ul,
+ol {
+    margin-top: 0rem;
+    margin-bottom: 2.5rem;
+}
+
+.mageplaza-fbt-image-box {
+    width: auto;
+    float: left;
+}
+
+@media (min-width: 1024px) {
+    .mageplaza-fbt-image-box {
+        max-width: calc(100% - 300px);
+    }
+}
+
+.mageplaza-fbt-price-box {
+    width: auto;
+    float: left;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
