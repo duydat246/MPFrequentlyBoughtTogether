@@ -5,10 +5,11 @@ import { useParams } from 'react-router-dom';
 import defaultClasses from './FrequentlyBoughtTogether.css';
 import { useFrequentlyBoughtTogether } from './useFrequentlyBoughtTogether';
 import { useProductDetails } from './useProductDetails';
-import { Price } from '@magento/peregrine';
-
 
 const FrequentlyBoughtTogether = (props) => {
+    const { product } = props;
+    console.log(product.small_image);
+
     const { productUrl = "" } = useParams();
     const { fbtData, fbtLoading, derivedErrorMessage } =
         useFrequentlyBoughtTogether({
@@ -48,6 +49,8 @@ const FrequentlyBoughtTogether = (props) => {
         }
     }
     console.log(fbtList);
+    fbtList.unshift(product)
+    console.log(fbtList);
 
 
     const dataPriceItems = fbtList.map(item => (item.price.regularPrice.amount.value))
@@ -74,7 +77,7 @@ const FrequentlyBoughtTogether = (props) => {
                                             <span className={classes.productImageContainer} style={{ width: "75px" }}>
                                                 <a href="#">
                                                     <span className={classes.productImageWrapper}>
-                                                        <img className={classes.productImagePhoto} src={item.small_image.url} alt="Image" loading="lazy" width="152" height="190" />
+                                                        <img className={classes.productImagePhoto} src={item.small_image.url || item.small_image} alt="Image" loading="lazy" width="152" height="190" />
                                                     </span>
                                                 </a>
                                             </span>

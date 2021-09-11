@@ -210,7 +210,7 @@ const ProductFullDetail = props => {
                     <strong>{productDetails.sku}</strong>
                 </section>
             </Form>
-            <FrequentlyBoughtTogether />
+            <FrequentlyBoughtTogether product={product} />
         </Fragment>
     );
 };

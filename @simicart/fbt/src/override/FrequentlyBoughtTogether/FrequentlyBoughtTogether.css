@@ -185,3 +185,6 @@ select:not([disabled]):focus {
 .fbtCheckboxLabel a:hover {
     text-decoration: underline;
 }
+ol > li:first-child {
+    display: none;
+}
