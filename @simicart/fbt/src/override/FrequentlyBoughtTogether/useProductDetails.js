@@ -34,6 +34,7 @@ export const FETCH_PRODUCT_DETAIL = gql`
                             }
                         }
                     }
+                    sku
                 }
             }
             total_count

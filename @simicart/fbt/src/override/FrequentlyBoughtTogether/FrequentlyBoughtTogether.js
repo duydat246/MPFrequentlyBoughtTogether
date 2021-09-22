@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import defaultClasses from './FrequentlyBoughtTogether.css';
 import { useFrequentlyBoughtTogether } from './useFrequentlyBoughtTogether';
 import { useProductDetails } from './useProductDetails';
+import { useState, useEffect } from 'react';
 
 const FrequentlyBoughtTogether = (props) => {
     const { product } = props;
@@ -57,12 +58,21 @@ const FrequentlyBoughtTogether = (props) => {
 
     const totalDataPrice = dataPriceItems.reduce((a, b) => a + b, 0)
 
+
+    // checkbox
+    const [checked, setChecked] = useState()
+
+    const handleChange = () => {
+        setChecked(!checked)
+    }
+    //
+
     const classes = mergeClasses(defaultClasses, props.classes);
     return (
         <div className={classes.fbt}>
 
             <div className={classes.fbtTitle}>
-                <h2 id="block-fbt-heading">Frequently bought together</h2>
+                <h2 id="block-fbt-heading">Frequently Bought Together</h2>
             </div>
             <div className={classes.fbtContent}>
                 <form>
@@ -72,7 +82,8 @@ const FrequentlyBoughtTogether = (props) => {
                             fbtList.map(item => (
                                 <>
                                     <li className={classes.fbtPlus}>+</li>
-                                    <li clasName={classes.item}>
+                                    {/* check or uncheck to show or hide item */}
+                                    {checked && (<li className={classes.item} key={item.id}>
                                         <span>
                                             <span className={classes.productImageContainer} style={{ width: "75px" }}>
                                                 <a href="#">
@@ -82,7 +93,7 @@ const FrequentlyBoughtTogether = (props) => {
                                                 </a>
                                             </span>
                                         </span>
-                                    </li>
+                                    </li>)}
                                 </>
                             ))
                         }</ol>
@@ -111,7 +122,16 @@ const FrequentlyBoughtTogether = (props) => {
                     <div className={classes.fbtProductsRows}>
                         <ul>{fbtList.map(item => (
                             <li>
-                                <input className={classes.relatedCheckbox} type="checkbox" id={item.id} data-price-amount={dataPriceItems} id={`mp-fbt-checkbox-${item.id}`} name={`mp_fbt[${item.id}]`} />
+                                {/* checkbox */}
+                                <input className={classes.relatedCheckbox}
+                                    type="checkbox"
+                                    id={item.id}
+                                    data-price-amount={dataPriceItems}
+                                    id={`mp-fbt-checkbox-${item.id}`}
+                                    name={`mp_fbt[${item.id}]`}
+                                    checked={checked}
+                                    onChange={() => handleChange()}
+                                />
                                 <span>
                                     <div className={classes.fbtCheckboxLabel}>
                                         <a href=""> {item.name} </a>
