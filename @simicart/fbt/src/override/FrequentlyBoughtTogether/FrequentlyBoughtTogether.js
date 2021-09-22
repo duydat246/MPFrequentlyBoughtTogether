@@ -60,12 +60,11 @@ const FrequentlyBoughtTogether = (props) => {
 
 
     // checkbox
-    const [checked, setChecked] = useState()
-
+    const [checked, setChecked] = useState(true)
     const handleChange = () => {
         setChecked(!checked)
     }
-    //
+
 
     const classes = mergeClasses(defaultClasses, props.classes);
     return (
