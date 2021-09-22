@@ -65,7 +65,6 @@ const FrequentlyBoughtTogether = (props) => {
         setChecked(!checked)
     }
 
-
     const classes = mergeClasses(defaultClasses, props.classes);
     return (
         <div className={classes.fbt}>
