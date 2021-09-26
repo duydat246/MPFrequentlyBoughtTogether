@@ -72,7 +72,7 @@ const FrequentlyBoughtTogether = (props) => {
                         <ol className={classes.fbtImageBox}>{
                             fbtList.map(item => (
                                 <>
-                                    <li className={classes.fbtPlus}>+</li>
+                                    {checkedVals.includes(item.id) && (<li className={classes.fbtPlus}>+</li>)}
                                     {checkedVals.includes(item.id) && (<li className={classes.item} key={item.id}>
                                         <span>
                                             <span className={classes.productImageContainer} style={{ width: "75px" }}>

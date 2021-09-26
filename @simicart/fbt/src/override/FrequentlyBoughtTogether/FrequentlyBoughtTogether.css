@@ -44,6 +44,10 @@ ol > li {
     margin-bottom: 1rem;
 }
 
+ol > li:first-child {
+    display: none;
+}
+
 .fbtProductsGrid {
     display: flex;
 }
@@ -180,7 +184,4 @@ select:not([disabled]):focus {
 
 .fbtCheckboxLabel a:hover {
     text-decoration: underline;
-}
-ol > li:first-child {
-    display: none;
 }
