@@ -49,23 +49,16 @@ const FrequentlyBoughtTogether = (props) => {
             }
         }
     }
-    console.log(fbtList);
     fbtList.unshift(product)
-    console.log(fbtList);
-
 
     const dataPriceItems = fbtList.map(item => (item.price.regularPrice.amount.value))
 
-    const totalDataPrice = dataPriceItems.reduce((a, b) => a + b, 0)
+    const [checkedVals, setCheckedVals] = useState([])
 
-
-    // checkbox
-    const [checked, setChecked] = useState(true)
-    const handleChange = () => {
-        setChecked(!checked)
-    }
+    const [total, setTotal] = useState(0)
 
     const classes = mergeClasses(defaultClasses, props.classes);
+
     return (
         <div className={classes.fbt}>
 
@@ -80,8 +73,7 @@ const FrequentlyBoughtTogether = (props) => {
                             fbtList.map(item => (
                                 <>
                                     <li className={classes.fbtPlus}>+</li>
-                                    {/* check or uncheck to show or hide item */}
-                                    {checked && (<li className={classes.item} key={item.id}>
+                                    {checkedVals.includes(item.id) && (<li className={classes.item} key={item.id}>
                                         <span>
                                             <span className={classes.productImageContainer} style={{ width: "75px" }}>
                                                 <a href="#">
@@ -98,19 +90,19 @@ const FrequentlyBoughtTogether = (props) => {
                         <div className={classes.fbtPriceBox}>
                             <div className={classes.fbtTotalPrice}>
                                 <span className={classes.fbtTotalPriceLabel}> Total price: </span>
-                                <span className={classes.fbtPriceWrapper} data-price-amount={totalDataPrice}>
-                                    <span className={classes.fbtPrice}>${totalDataPrice}.00</span>
+                                <span className={classes.fbtPriceWrapper} data-price-amount={total}>
+                                    <span className={classes.fbtPrice}>${total}.00</span>
                                 </span>
                             </div>
                             <div className={classes.fbtButton}>
                                 <div className={classes.fbtAddToCart}>
                                     <button type="submit" title="add all ${fbtList.length} to cart" className={classes.mpfbtToCart}>
-                                        <span>Add all {fbtList.length} product to cart</span>
+                                        <span>Add all {checkedVals.length} product to cart</span>
                                     </button>
                                 </div>
                                 <div className={classes.fbtAddToWishlist}>
                                     <button type="submit" title="Add all ${fbtList.length} to Wishlist" className={classes.mpfbtToWishList}>
-                                        <span>Add all {fbtList.length} product to Wishlist</span>
+                                        <span>Add all {checkedVals.length} product to Wishlist</span>
                                     </button>
                                 </div>
                             </div>
@@ -120,15 +112,26 @@ const FrequentlyBoughtTogether = (props) => {
                     <div className={classes.fbtProductsRows}>
                         <ul>{fbtList.map(item => (
                             <li>
-                                {/* checkbox */}
                                 <input className={classes.relatedCheckbox}
                                     type="checkbox"
                                     id={item.id}
                                     data-price-amount={dataPriceItems}
                                     id={`mp-fbt-checkbox-${item.id}`}
                                     name={`mp_fbt[${item.id}]`}
-                                    checked={checked}
-                                    onChange={() => handleChange()}
+                                    checked={checkedVals.includes(item.id)}
+                                    onChange={() => {
+                                        if (checkedVals.includes()) {
+                                            let newCheckVals = checkedVals.filter(e => e !== item.id)
+                                            setCheckedVals(newCheckVals)
+                                        }
+                                        else {
+                                            let newCheckVal = checkedVals;
+                                            newCheckVal.push(item.id);
+                                            setCheckedVals([...newCheckVal]);
+                                            setTotal(total + item.price.regularPrice.amount.value)
+                                        }
+                                    }
+                                    }
                                 />
                                 <span>
                                     <div className={classes.fbtCheckboxLabel}>
@@ -141,7 +144,6 @@ const FrequentlyBoughtTogether = (props) => {
                     </div>
                 </form>
             </div>
-
         </div>
     );
 }
