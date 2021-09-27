@@ -1,23 +1,19 @@
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import { shape, string } from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import defaultClasses from './FrequentlyBoughtTogether.css';
 import { useFrequentlyBoughtTogether } from './useFrequentlyBoughtTogether';
 import { useProductDetails } from './useProductDetails';
-import { useState, useEffect } from 'react';
 
 const FrequentlyBoughtTogether = (props) => {
     const { product } = props;
-    console.log(product.small_image);
 
     const { productUrl = "" } = useParams();
     const { fbtData, fbtLoading, derivedErrorMessage } =
         useFrequentlyBoughtTogether({
             url_key: productUrl.replace('.html', '')
         });
-
-    console.log(fbtData);
 
     const skuDatas = [];
     if (fbtData) {
@@ -26,9 +22,7 @@ const FrequentlyBoughtTogether = (props) => {
             let skuData = fbtData.products.items[i].sku
             skuDatas.push(skuData);
         }
-        console.log(skuDatas)
     }
-
 
     const { detailsData,
         detailsLoading,
@@ -36,7 +30,6 @@ const FrequentlyBoughtTogether = (props) => {
         useProductDetails({
             sku_product: skuDatas
         });
-    console.log("detailsData: ", detailsData);
 
     const fbtList = []
     if (detailsData) {
@@ -66,7 +59,7 @@ const FrequentlyBoughtTogether = (props) => {
                 <h2 id="block-fbt-heading">Frequently Bought Together</h2>
             </div>
             <div className={classes.fbtContent}>
-                <form>
+                <form >
                     <input name="form-key" type="hidden" value="qwMftPeI0eqzf77X" />
                     <div className={classes.fbtProductsGrid}>
                         <ol className={classes.fbtImageBox}>{
@@ -120,9 +113,10 @@ const FrequentlyBoughtTogether = (props) => {
                                     name={`mp_fbt[${item.id}]`}
                                     checked={checkedVals.includes(item.id)}
                                     onChange={() => {
-                                        if (checkedVals.includes()) {
-                                            let newCheckVals = checkedVals.filter(e => e !== item.id)
-                                            setCheckedVals(newCheckVals)
+                                        if (checkedVals.includes(item.id)) {
+                                            let newCheckVal = checkedVals.filter(e => e !== item.id)
+                                            setCheckedVals(newCheckVal)
+                                            setTotal(total - item.price.regularPrice.amount.value)
                                         }
                                         else {
                                             let newCheckVal = checkedVals;
@@ -152,5 +146,6 @@ FrequentlyBoughtTogether.propTypes = {
     classes: shape({ root: string })
 };
 FrequentlyBoughtTogether.defaultProps = {
+
 };
 export default FrequentlyBoughtTogether;

@@ -47,8 +47,8 @@ export const FETCH_PRODUCT_DETAIL = gql`
     }
 `;
 
-export const useProductDetails = props => {
-    const { sku_product } = props;
+export const useProductDetails = (props) => {
+    const { sku_product } = props ? props.sku_product : null;
     const {
         error: detailsError,
         loading: detailsLoading,
